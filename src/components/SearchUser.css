@@ -1,0 +1,29 @@
+.search {
+  width: 500px;
+  height: auto;
+  display: flex;
+  padding: 1rem;
+  margin-top: 0.6rem;
+  margin-bottom: 8.9rem;
+  border: none;
+  border-radius: 0.6rem;
+  background-color: #20293a;
+}
+
+.search img {
+  margin-right: 0.8rem;
+}
+
+.search input {
+  font-size: 1rem;
+  color: #CDD5E0;
+  appearance: none;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.search input::placeholder {
+  color: #364153;
+  font-weight: 600;
+}

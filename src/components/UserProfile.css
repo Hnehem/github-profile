@@ -1,0 +1,31 @@
+#profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.profileInfo {
+    width: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.profileImg {
+    width: 8rem;
+    height: 7rem;
+    margin-top: -2.6rem;
+    margin-right: 2rem;
+    padding: 0.2rem;
+    background-color: aqua;
+    border-radius: 0.8rem;
+}
+
+.profileData {
+    display: flex;
+}
+
+.user {
+    text-align: start;
+    margin-top: 1rem;
+}
