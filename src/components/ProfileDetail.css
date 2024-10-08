@@ -1,0 +1,18 @@
+.detail {
+    display: flex;
+    margin: 0 0.4rem 0 0.8rem;
+    padding: .6rem;
+    border-radius: 0.8rem;
+    background-color: #111729;
+}
+
+.title {
+    font-weight: 600;
+    color: #364153;
+    padding: 0.3rem 0.9rem 0.3rem 0.3rem;
+    border-right: 1.3px solid #4A5567;
+}
+
+.val {
+    padding: 0.3rem 0.3rem 0.3rem 0.9rem;
+}

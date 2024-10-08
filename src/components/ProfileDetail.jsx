@@ -1,3 +1,5 @@
+import '../components/ProfileDetail.css'
+
 // eslint-disable-next-line react/prop-types
 export default function ProfileDetail({title, value}) {
     return (

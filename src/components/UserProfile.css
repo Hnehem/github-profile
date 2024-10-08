@@ -12,9 +12,9 @@
 }
 
 .profileImg {
-    width: 8rem;
-    height: 7rem;
-    margin-top: -2.6rem;
+    width: 7.5rem;
+    height: 6.5rem;
+    margin-top: -2.4rem;
     margin-right: 2rem;
     padding: 0.2rem;
     background-color: aqua;
@@ -28,4 +28,12 @@
 .user {
     text-align: start;
     margin-top: 1rem;
+}
+
+.userName {
+    font-size: 2rem;
+}
+
+.userDescription {
+    font-size: 1.25rem;
 }

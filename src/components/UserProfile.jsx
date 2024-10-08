@@ -16,7 +16,7 @@ export default function UserProfile() {
             </div>
             <div className="user">
                 <p className="userName">GitHub</p>
-                <p className="userDescrption">How people build software.</p>
+                <p className="userDescription">How people build software.</p>
             </div>
         </div>
     )

@@ -1,21 +1,22 @@
 #root {
+  width: 100%;
   max-width: 100vw;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  color: #CDD5E0;
+  padding: 0 4rem;
   background-image: url('./assets/hero-image-github-profile.png');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: auto 25%;
+  background-position: top;
   background-color: #20293A;
 }
 
 #container {
-  width: 990px;
-  max-width: 1200px;
+  width: auto;
+  max-width: 1152px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 4rem
 }
