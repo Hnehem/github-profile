@@ -1,8 +1,9 @@
 .repositoryCard {
-    min-width: 410px;
+    min-width: 420px;
     height: auto;
     display: flex;
     flex-direction: column;
+    color: #4A5567;
     padding: 1.5rem;
     border-radius: 1rem;
     background: linear-gradient(90deg, #111729, #1D1B48);
@@ -10,6 +11,7 @@
 
 .repoTitle {
     font-size: 1.25rem;
+    color: #CDD5E0;
 }
 
 .repoDescription {

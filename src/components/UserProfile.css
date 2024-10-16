@@ -12,17 +12,35 @@
 }
 
 .profileImg {
-    width: 7.5rem;
-    height: 6.5rem;
+    width: 8rem;
+    height: 8rem;
     margin-top: -2.4rem;
     margin-right: 2rem;
-    padding: 0.2rem;
-    background-color: aqua;
+    padding: 0.4rem;
+    background-color: #20293A;
+    border-radius: 0.8rem;
+}
+
+.profileImg img {
+    width: 100%;
+    height: 100%;
     border-radius: 0.8rem;
 }
 
 .profileData {
     display: flex;
+}
+
+@media (max-width: 834px) {
+    .profileInfo {
+        align-items: start;
+    }
+
+    .profileData {
+        flex-direction: column;
+        margin-top: 1rem;
+        gap: 1rem;
+    }
 }
 
 .user {
@@ -36,4 +54,5 @@
 
 .userDescription {
     font-size: 1.25rem;
+    color: #4A5567;
 }

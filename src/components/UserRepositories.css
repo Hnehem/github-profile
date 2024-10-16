@@ -4,4 +4,5 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
     gap: 2rem 1.5rem;
+    align-items: top;
 }

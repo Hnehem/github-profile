@@ -6,17 +6,43 @@
   padding: 0 4rem;
   background-image: url('./assets/hero-image-github-profile.png');
   background-repeat: no-repeat;
-  background-size: auto 25%;
+  background-size: auto 256px;
   background-position: top;
   background-color: #20293A;
 }
 
 #container {
   width: auto;
-  max-width: 1152px;
+  max-width: 1130px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 4rem
+  margin: 0 4rem;
+  padding-bottom: 3rem;
+
+}
+
+@media (min-width: 1200px) {
+  #root {
+    display: flex;
+    justify-content: center;
+    background-size: 100% 256px;
+  }
+
+  #container {
+    width: 1130px
+  }
+}
+
+@media (max-width: 1120px) {
+  #container {
+    margin: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  #root {
+    padding: 0 2.8rem;
+  }
 }
