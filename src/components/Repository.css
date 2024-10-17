@@ -1,6 +1,6 @@
 .repositoryCard {
     min-width: 420px;
-    height: auto;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     color: #4A5567;

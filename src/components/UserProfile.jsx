@@ -4,10 +4,8 @@ import "./UserProfile.css";
 import { AppContext } from "../state/state";
 
 export default function UserProfile() {
-  const {user} = useContext(AppContext);
+  const {user, getUser} = useContext(AppContext);
   const {avatar, followers, following, location, bio, userName} = user;
-
-  const {getUser} = useContext(AppContext);
 
   useEffect(() => {
     const setUser = async () => {
@@ -17,6 +15,7 @@ export default function UserProfile() {
       
       getUser({
         user: {
+          login: response.login,
           userName: response.name,
           bio: response.bio,
           avatar: response.avatar_url,
@@ -24,7 +23,6 @@ export default function UserProfile() {
           followers: response.followers,
           location: response.location,
         },
-        reposUrl: response.repos_url,
       })
     }
 
@@ -40,7 +38,7 @@ export default function UserProfile() {
         <div className="profileData">
           <ProfileDetail title="Followers" value={followers} />
           <ProfileDetail title="Following" value={following} />
-          <ProfileDetail title="Location" value={location} />
+          {location && <ProfileDetail title="Location" value={location} />}
         </div>
       </div>
       <div className="user">

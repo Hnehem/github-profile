@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const AppContext = createContext({
   user: {},
-  reposUrl: "",
+  // reposUrl: "",
   getUser: () => {},
 });
 
@@ -10,16 +10,20 @@ export const AppContext = createContext({
 export default function AppContexProvider({ children }) {
   const [user, setUser] = useState({
     user: {},
-    reposUrl: "",
+    // reposUrl: "",
   });
 
-  function handleUserChange(user) {
-    setUser({...user });
+  function handleUserChange({user}) {
+    setUser(() => { 
+      return {
+      user: {...user},
+      // resposUrl: reposUrl,
+    }});    
   }
 
   const ctxtValue = {
     user: user.user,
-    resposUrl: user.reposUrl,
+    // reposUrl: user.reposUrl,
     getUser: handleUserChange,
   };
 

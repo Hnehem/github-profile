@@ -37,6 +37,7 @@ export default function SearchUser() {
 
       setUser({
         user: {
+          login: response.login,
           userName: response.name,
           bio: response.bio,
           avatar: response.avatar_url,
@@ -60,7 +61,7 @@ export default function SearchUser() {
   const chosingUser = () => {
     getUser({
       user: { ...user.user },
-      resposUrl: user.reposUrl,
+      // resposUrl: user.reposUrl,
     });
 
     setNewUser('')
@@ -78,7 +79,7 @@ export default function SearchUser() {
           type="text"
           placeholder="username"
         />
-        {newUser && (
+        {user.user && (
           <div className="newUser" onClick={chosingUser}>
             <img src={user.user.avatar} alt="" />
             <div className="newUserInfo">

@@ -3,25 +3,31 @@ import nestingImg from '../assets/Nesting.svg';
 import starImg from '../assets/Star.svg';
 import '../components/Repository.css'
 
-export default function Repository() {
+// eslint-disable-next-line react/prop-types
+export default function Repository({license, forked, stared, update, descript, title}) {
+
+  // eslint-disable-next-line react/prop-types
+  if (license) license = license.spdx_id;
+  console.log(license);
+  
   return (
     <div className="repositoryCard">
-      <p className="repoTitle">.github</p>
+      <p className="repoTitle">{title}</p>
       <p className="repoDescription">
-        Client side accessibility error scanner.
+        {descript}
       </p>
       <div className="repoData">
-        <div>
+        {license && <div>
             <img src={mitImg} alt="chield icon" />
-            <p>MIT</p>
-        </div>
+            <p>{license}</p>
+        </div>}
         <div>
-            <img src={nestingImg} alt="shared icon" />
-            <p>72</p>
+            <img src={nestingImg} alt="fork icon" />
+            <p>{forked}</p>
         </div>
         <div>
             <img src={starImg} alt="star icon" />
-            <p>18437</p>
+            <p>{stared}</p>
         </div>
         <p>updated 4 day ago</p>
       </div>
