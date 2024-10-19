@@ -14,5 +14,6 @@
 }
 
 .val {
+    white-space: nowrap;
     padding: 0.3rem 0.3rem 0.3rem 0.9rem;
 }

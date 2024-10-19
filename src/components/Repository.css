@@ -7,6 +7,7 @@
     padding: 1.5rem;
     border-radius: 1rem;
     background: linear-gradient(90deg, #111729, #1D1B48);
+    cursor: pointer;
 }
 
 .repoTitle {

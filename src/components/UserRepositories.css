@@ -6,3 +6,16 @@
     gap: 2rem 1.5rem;
     align-items: top;
 }
+
+.goTo {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    color: #4A5567;
+    transition: transform 0.3s ease;
+}
+
+.goTo:hover {
+    transform: scale(1.06);
+    cursor: pointer;
+}

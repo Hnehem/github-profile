@@ -2,15 +2,18 @@ import "./SearchUser.css";
 import mySearch from "../assets/Search.svg";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../state/state";
+import SearchLoader from "./UI/SearchLoader";
 
 export default function SearchUser() {
   const { getUser } = useContext(AppContext);
+
+  const [error, setError] = useState(undefined);
+  const [loading, setLoading] = useState(false);
 
   const [newUser, setNewUser] = useState("");
   const [debouncedUser, setDebouncedUser] = useState("");
   const [user, setUser] = useState({
     user: undefined,
-    reposUrl: "",
   });
 
   const inputReff = useRef();
@@ -19,7 +22,6 @@ export default function SearchUser() {
     const timeOut = setTimeout(() => {
       setDebouncedUser(newUser);
     }, 500);
-
 
     return () => {
       clearTimeout(timeOut);
@@ -30,23 +32,40 @@ export default function SearchUser() {
     // if (!debouncedUser.length > 0) return;
 
     const getUser = async () => {
-      const user = await fetch(`https://api.github.com/users/${debouncedUser}`);
+      try {
+        const user = await fetch(
+          `https://api.github.com/users/${debouncedUser}`
+        );
 
-      const response = await user.json();
-      console.log(response);
+        if (!user.ok) {
+          console.log(user);
 
-      setUser({
-        user: {
-          login: response.login,
-          userName: response.name,
-          bio: response.bio,
-          avatar: response.avatar_url,
-          following: response.following,
-          followers: response.followers,
-          location: response.location,
-        },
-        reposUrl: response.repos_url,
-      });
+          throw new Error(user.status);
+        }
+
+        const response = await user.json();
+
+        setUser({
+          user: {
+            login: response.login,
+            userName: response.name,
+            bio: response.bio,
+            avatar: response.avatar_url,
+            following: response.following,
+            followers: response.followers,
+            location: response.location,
+          },
+          reposUrl: response.repos_url,
+        });
+        setLoading(false);
+      } catch (error) {
+        if (error.message == "404") {
+          setError("Oops! This user doesn't exist");
+        } else {
+          setError(`There's been an error: ${error.message}`);
+        }
+        setLoading(false);
+      }
     };
 
     if (debouncedUser) {
@@ -55,17 +74,24 @@ export default function SearchUser() {
   }, [debouncedUser]);
 
   const onInputChange = () => {
+    setError('')
+    setLoading(true);
     setNewUser(inputReff.current.value);
   };
 
   const chosingUser = () => {
+    if (error) {
+      setNewUser("");
+      setUser("");
+      return;
+    }
+
     getUser({
       user: { ...user.user },
-      // resposUrl: user.reposUrl,
     });
 
-    setNewUser('')
-    setUser('')
+    setNewUser("");
+    setUser("");
   };
 
   return (
@@ -79,19 +105,29 @@ export default function SearchUser() {
           type="text"
           placeholder="username"
         />
-        {user.user && (
+        {newUser && (
           <div className="newUser" onClick={chosingUser}>
-            <img src={user.user.avatar} alt="" />
-            <div className="newUserInfo">
-              <p>{user.user.userName}</p>
-              {user.user.bio && (
-                <span>
-                  {user.user.bio.length > 64
-                    ? user.user.bio.slice(0, 64) + "..."
-                    : user.user.bio}
-                </span>
-              )}
-            </div>
+            {loading && <SearchLoader />}
+            {!loading && (
+              <>
+                {error && <div className="error">{error}</div>}
+                {!error && (
+                  <>
+                    <img src={user.user.avatar} alt="user avatar" />
+                    <div className="newUserInfo">
+                      <p>{user.user.userName}</p>
+                      {user.user.bio && (
+                        <span>
+                          {user.user.bio.length > 64
+                            ? user.user.bio.slice(0, 64) + "..."
+                            : user.user.bio}
+                        </span>
+                      )}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
           </div>
         )}
       </div>
